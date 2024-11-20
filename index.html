@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Jesus J Cantero">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Ceuta</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/197/197553.png">
+</head>
+<body id="home">
+<div class="navbar">
+    <!-- Navigation bar -->
+</div>
+
+<div class="header-section">
+    <h1>Max-Min Number Validation</h1>
+</div>
+
+<div class="content-section">
+    <form id="numberValidationForm">
+        <label for="minimo">Minimum:</label>
+        <input type="text" id="minimo" name="minimo" placeholder="Put a number" required>
+        <br><br>
+        <label for="maximo">Maximum:</label>
+        <input type="text" id="maximo" name="maximo" placeholder="Put a number" required>
+        <br><br>
+        <button type="button" onclick="validarNumeros()">Validate</button>
+        <p id="resultado"></p>
+    </form>
+</div>
+
+<div class="footer-section">
+    <address>
+        Written by Jesús J. Cantero.<br>
+        Duck Republik Student Hotel Riga, Lauvas iela 1, Latgales priekšpilsēta, Rīga, LV-1003<br>
+        Riga, Latvia
+    </address>
+</div>
+
+<script>
+    function validarNumeros() {
+        // Get the fields values
+        const minimo = document.getElementById('minimo').value.trim();
+        const maximo = document.getElementById('maximo').value.trim();
+        const resultado = document.getElementById('resultado');
+
+        // Clear the fields
+        resultado.textContent = '';
+
+        // Check if non-numeric value its filled
+        if (isNaN(minimo) || isNaN(maximo) || minimo === '' || maximo === '') {
+            resultado.textContent = 'Please, put just numbers in the fields.';
+            resultado.style.color = 'red';
+            return;
+        }
+
+        // Convert values to numbers
+        const numMinimo = parseFloat(minimo);
+        const numMaximo = parseFloat(maximo);
+
+        // Check if the min value is less than max value
+        if (numMinimo < numMaximo) {
+            resultado.textContent = 'The minimum number is less than the maximum. Nice!';
+            resultado.style.color = 'green';
+        } else {
+            resultado.textContent = 'The minimum number is more than the maximum. Try again.';
+            resultado.style.color = 'red';
+        }
+    }
+</script>
+</body>
+</html>
